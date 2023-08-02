@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Result Page</title>
+</head>
+<style>
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}</style>
+<body>
+<h1>Result Page</h1>
+<table class="styled-table">
+    <thead>
+    <tr>
+        <th>Sr.no</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th>PhoneNumber</th>
+        <th>Skills</th>
+        <th>Resume</th> <!-- New column for download button -->
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${infoMap}">
+        <td th:text="${entry.key}"></td>
+        <td th:text="${entry.value['firstName']}"></td>
+        <td th:text="${entry.value['lastName']}"></td>
+        <td th:text="${entry.value['Email']}"></td>
+        <td th:text="${entry.value['phoneNumber']}"></td>
+        <td th:text="${entry.value['skills']}"></td>
+<!--        <embed src="/Hardik_NIT Jalandhar.pdf" width="500" height="375" type='application/pdf'>&lt;!&ndash;        <td><embed th:src="${entry.value['url']}" type="application/pdf" width="100%" height="600px" /></td>&ndash;&gt;-->
+<!--        <td><button th:onclick="openPdf(${entry.value['url']})">View PDF</button></td>-->
+        <td><a th:href="${entry.value['url']}" target="_blank">View pdf</a></td>
+            </tr>
+
+    </tbody>
+</table>
+<script>
+        function openPdf(str1) {
+            window.open("/api/pdf/" + str1, "_blank");
+        }
+    </script>
+</body>
+</html>
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Temporary Files</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<ul>-->
+<!--    <th:each="file : ${files}">-->
+<!--    <li><a href="${file.path}" target="_blank">${file.name}</a></li>-->
+<!--    </th>-->
+<!--</ul>-->
+<!--</body>-->
+<!--</html>-->
+

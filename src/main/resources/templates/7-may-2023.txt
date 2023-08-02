@@ -1,0 +1,134 @@
+7-may-2023
+
+ROS (Robot Operating System) is a popular open-source software framework for robotics. It provides libraries, tools, and capabilities for developing robot software, such as communication protocols, device drivers, and visualization tools. Its usefulness is not limited to robots, but the majority of tools provided are focused on working with peripheral hardware.
+
+System requirements for installing ROS:
+Before starting the installation process, it is important to ensure that your system meets the minimum requirements for running ROS. The minimum requirements for installing ROS on Windows are as follows:
+Windows 10 (64-bit) or Windows 11 (64-bit)
+64-bit dual-core processor or better
+8 GB of RAM or more
+At least 50 GB of free disk space
+A graphics card with OpenGL 3.3 support or better 
+
+Installation steps:
+The installation process for ROS on Windows can be broken down into the following steps:
+
+Step 1: Install Ubuntu on Windows
+
+To install ROS on Windows, it is first necessary to install a Linux distribution. One way to do this is by using the Windows Subsystem for Linux (WSL). WSL allows you to run a Linux distribution alongside Windows, providing access to the Linux command line interface and tools.
+
+To install Ubuntu on Windows, follow these steps:
+
+Open the Microsoft Store and search for "Ubuntu".
+Click the "Get" button to download and install Ubuntu.
+Launch Ubuntu and create a new user account when prompted.
+
+Step 2: Install ROS
+Once Ubuntu is installed, you can install ROS by following these steps:
+Open a terminal window in Ubuntu.
+
+Add the ROS repository to your list of software sources by running the following command:
+1st command - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+
+Set up the ROS keys by running the following command:
+sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
+Update your package list by running the following command:
+sudo apt update
+
+Install ROS by running the following command:
+sudo apt install ros-noetic-desktop-full
+
+Initialize ROS by running the following command:
+echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
+Testing the Installation:
+After the installation is complete, you can test whether ROS is working properly by running the following commands:
+Launch the ROS core by running the following command:
+roscore
+
+Open a new terminal window and run the following command to launch the turtlesim simulator:
+rosrun turtlesim turtlesim_node
+
+Open another terminal window and run the following command to control the turtle:
+rosrun turtlesim turtle_teleop_key
+
+In conclusion, installing ROS on Windows requires first installing Ubuntu on the Windows operating system, and then installing ROS on top of Ubuntu. Once ROS is installed, you can test its functionality using the turtlesim simulator.By running each and every commands the Ubuntu (WSL) and ROS full desktop will be installed
+
+
+Simulating the Robotic arm on gazebo
+
+Kit required to develop Robotic Arm Simulation with ROS and Gazebo and technologies learn by simulating robotic arm:
+ROS
+Linux
+Gazebo
+
+
+
+Real-World Applications
+
+This project has a number of real-world applications: 
+
+Indoor Delivery Robots
+Order Fulfillment
+Factories
+Warehouses
+Space Exploration
+Power Plants
+
+Install ROS Packages
+sudo apt-get install ros-noetic-ros-control
+sudo apt-get install ros-noetic-ros-controllers
+sudo apt-get install ros-noetic-gazebo-ros-control
+
+Create a ROS Package
+In a new terminal window, move to the src (source) folder of your workspace.
+cd ~/catkin_ws/src
+Now create the package.
+catkin_create_pkg mobile_manipulator_body std_msgs roscpp rospy
+cd ~/catkin_ws/
+catkin_make --only-pkg-with-deps mobile_manipulator_body
+
+
+Create Folders
+Open a new terminal window.
+
+Move to your package.
+roscd mobile_manipulator_body
+Create these four folders. 	
+
+Build the Base of the Robot
+Now move to your meshes folder.
+cd meshes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Resources -
+For installing ROS Noetic on Ubuntu- http://wiki.ros.org/Installation/Ubuntu
+For simulating the simulated mobile robot base on Gazebo - https://automaticaddison.com/how-to-build-a-simulated-mobile-robot-base-using-ros/
+For simulating the robotic arm on Gazebo - https://automaticaddison.com/how-to-build-a-simulated-robot-arm-using-ros/
+
+
